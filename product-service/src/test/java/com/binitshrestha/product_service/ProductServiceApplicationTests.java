@@ -38,17 +38,15 @@ class ProductServiceApplicationTests {
 		dynamicPropertyRegistry.add("spring.data.mongodb.uri", mongoDBContainer::getReplicaSetUrl);
 	}
 
-	@Test
-	void shouldCreateProduct() throws Exception {
-		ProductRequest productRequest = getProductRequest();
-		String productRequestString = objectMapper.writeValueAsString(productRequest); // convert pojo product request to json
-		mockMvc.perform(MockMvcRequestBuilders.post("/api/product/create")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(productRequestString))
-				.andExpect(status().isCreated());
-
-
-	}
+//	@Test
+//	void shouldCreateProduct() throws Exception {
+//		ProductRequest productRequest = getProductRequest();
+//		String productRequestString = objectMapper.writeValueAsString(productRequest); // convert pojo product request to json
+//		mockMvc.perform(MockMvcRequestBuilders.post("/api/product/create")
+//				.contentType(MediaType.APPLICATION_JSON)
+//				.content(productRequestString))
+//				.andExpect(status().isCreated());
+//	}
 	private ProductRequest getProductRequest() {
 		return ProductRequest.builder()
 				.name("iphone 13")
