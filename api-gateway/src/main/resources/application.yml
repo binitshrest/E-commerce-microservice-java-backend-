@@ -1,7 +1,7 @@
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://eureka:password@localhost:8761/eureka
 
 
 
@@ -15,6 +15,11 @@ logging:
 spring:
   application:
     name: api-gateway
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8181/realms/Spring-boot-microservice-realm
   cloud:
     gateway:
       routes[0]:
@@ -44,4 +49,6 @@ spring:
         id: discovery-server-static
         uri: http://localhost:8761
         predicates[0]: Path=/eureka/**
+
+
 

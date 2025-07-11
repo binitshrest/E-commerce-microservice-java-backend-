@@ -1,4 +1,7 @@
 eureka:
+  username: ${EUREKA_USERNAME:eureka}
+  password: ${EUREKA_PASSWORD:{noop}password}
+
   instance:
     hostname: localhost
   client:
@@ -12,3 +15,5 @@ logging:
   level:
     org.springframework.cloud.netflix.eureka: TRACE
     com.netflix.eureka: TRACE
+
+
