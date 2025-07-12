@@ -29,12 +29,13 @@ management:
   health:
     circuit-breakers:
       enabled: true
-    show-details: always
-
   endpoints:
     web:
       exposure:
         include: [health, info, metrics]
+  endpoint:
+    health:
+      show-details: always
 
 #Resilience properties
 resilience4j:
@@ -54,8 +55,7 @@ resilience4j:
   timelimiter:
     instances:
       inventory:
-        timeout-duration:
-          3s
+        timeout-duration: 3s
 
 
 
