@@ -36,3 +36,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+##Docker Keycloak
+#docker run -p 127.0.0.1:8181:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:18.0.0 start-dev
