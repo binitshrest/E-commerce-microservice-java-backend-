@@ -10,5 +10,15 @@ eureka:
     serviceUrl:
       defaultZone: http://eureka:password@localhost:8761/eureka
 
+    register-with-eureka: true
+    fetch-registry: true
+
 server:
   port: 0
+
+  zipkin:
+    base-url: http://localhost:9411
+
+  sleuth:
+    sampler:
+      probability: 1.0

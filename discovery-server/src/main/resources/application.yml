@@ -16,4 +16,12 @@ logging:
     org.springframework.cloud.netflix.eureka: TRACE
     com.netflix.eureka: TRACE
 
+spring:
+  zipkin:
+    base-url: http://localhost:9411
+
+  sleuth:
+    sampler:
+      probability: 1.0
+
 
