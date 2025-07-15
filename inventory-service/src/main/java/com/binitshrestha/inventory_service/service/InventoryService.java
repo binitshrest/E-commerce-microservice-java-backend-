@@ -19,7 +19,8 @@ public class InventoryService {
     @SneakyThrows //Don't use in prod, used for exception
     public List<InventoryResponse> isInStock(List<String> skuCode){
         log.info("Wait Started");
-        Thread.sleep(10000);
+        //sleep thread of 10 sec order service call inventory to trigger circuit breaker than fall back mechanism
+//        Thread.sleep(10000);
         log.info("Wait End");
         return inventoryRepository.findBySkuCodeIn(skuCode).stream()
                 .map(inventory ->

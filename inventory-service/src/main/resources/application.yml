@@ -15,6 +15,11 @@ spring:
           format_sql: true
       database: postgresql
       database-platform: org.hibernate.dialect.PostgreSQLDialect
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1.0
 
 server:
     port: 0
@@ -24,9 +29,6 @@ eureka:
     serviceUrl:
       defaultZone: http://eureka:password@localhost:8761/eureka
 
-  zipkin:
-    base-url: http://localhost:9411
 
-  sleuth:
-    sampler:
-      probability: 1.0
+
+

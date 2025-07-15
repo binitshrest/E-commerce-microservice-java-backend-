@@ -1,6 +1,11 @@
 spring:
   application:
     name: order-service
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1.0
 
   datasource:
     url: jdbc:postgresql://localhost:5432/order_service
@@ -17,6 +22,19 @@ spring:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
+  ## kafka Properties
+  kafka:
+    bootstrap-servers: localhost:9092
+    template:
+      default-topic: notificationTopic
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring:
+          json:
+            type:
+              mapping: event:com.binitshrestha.order_service.event.OrderPlacedEvent
 server:
   port: 8081
 
@@ -32,7 +50,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: [health, info, metrics]
+        include: [ health, info, metrics ]
   endpoint:
     health:
       show-details: always
@@ -51,7 +69,7 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 5
         automaticTransitionFromOpenToHalfOpenEnabled: true
 
-#Resilience4J Timeout Property
+  #Resilience4J Timeout Property
   timelimiter:
     instances:
       inventory:
@@ -64,18 +82,18 @@ resilience4j:
         max-attempts: 3
         wait-duration: 5s
 
-  zipkin:
-    base-url: http://localhost:9411
 
-  sleuth:
-    sampler:
-      probability: 1.0
+
+
+
 
 logging:
   level:
     org:
       springframework:
         security: TRACE
+
+
 
 #  management.health.fcircuitbreakers.enabled=true
 #  management.endpoints.web.exposure.include=*

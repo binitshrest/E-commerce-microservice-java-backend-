@@ -15,11 +15,11 @@ logging:
 spring:
   application:
     name: api-gateway
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8181/realms/Spring-boot-microservice-realm
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri: http://localhost:8181/realms/Spring-boot-microservice-realm
 
   cloud:
     gateway:
